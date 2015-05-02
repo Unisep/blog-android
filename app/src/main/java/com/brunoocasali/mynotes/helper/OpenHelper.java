@@ -33,17 +33,18 @@ public class OpenHelper extends SQLiteOpenHelper {
                 Constant.COLUMN_DESCRIPTION + " TEXT, " +
                 Constant.COLUMN_ON_UPDATE + " on_update INTEGER, " +
                 Constant.COLUMN_ON_CREATE + " on_create INTEGER)";
+
         db.execSQL(sql);
     }
 
     private void createNoteTable(SQLiteDatabase db){
-        String sql = "CREATE TABLE " + Constant.TABLE_NOTEBOOKS + "(" +
-                " _id INTEGER PRIMARY KEY, " +
-                " title TEXT NOT NULL, " +
-                " description TEXT, " +
-                " on_update INTEGER, " +
-                " on_create INTEGER, " +
-                " id_notebook REFERENCES notebooks(id))";
+        String sql = "CREATE TABLE " + Constant.TABLE_NOTES + "(" +
+                Constant.COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                Constant.COLUMN_TITLE + " TEXT NOT NULL, " +
+                Constant.COLUMN_DESCRIPTION + " TEXT, " +
+                Constant.COLUMN_ON_UPDATE + " on_update INTEGER, " +
+                Constant.COLUMN_ON_CREATE + " on_create INTEGER)" +
+                Constant.COLUMN_NOTEBOOK_ID + " REFERENCES notebooks(id))";
 
         db.execSQL(sql);
     }
