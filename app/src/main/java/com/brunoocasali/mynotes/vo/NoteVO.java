@@ -1,12 +1,17 @@
 package com.brunoocasali.mynotes.vo;
 
+import java.util.Date;
+
 /**
  * Created by bruno on 02/05/15.
  */
 public class NoteVO {
+
     private Integer id;
     private String title;
     private String text;
+    private Date onCreate;
+    private Date onUpdate;
     private NotebookVO notebook;
 
     public Integer getId() {
@@ -39,5 +44,21 @@ public class NoteVO {
 
     public void setNotebook(NotebookVO notebook) {
         this.notebook = notebook;
+    }
+
+    public Date getOnCreate() {
+        return onCreate;
+    }
+
+    public void setOnCreate(Date onCreate) {
+        this.onCreate = onCreate;
+    }
+
+    public Date getOnUpdate() {
+        return onUpdate;
+    }
+
+    public void setOnUpdate(Date onUpdate) {
+        this.onUpdate = onUpdate;
     }
 }
