@@ -57,4 +57,19 @@ public class NotebookDAO {
         db.delete(Constant.TABLE_NOTEBOOKS, "_id = ?", condition);
         db.close();
     }
+
+    public void update(NotebookVO notebook){
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(Constant.COLUMN_TITLE, notebook.getTitle());
+        values.put(Constant.COLUMN_ON_UPDATE, new Date().getTime());
+        values.put(Constant.COLUMN_DESCRIPTION, notebook.getDescription());
+
+        String[] condition = { String.valueOf(notebook.getId()) };
+
+        db.update(Constant.TABLE_NOTEBOOKS, values, "_id = ?", condition);
+        db.close();
+    }
 }
