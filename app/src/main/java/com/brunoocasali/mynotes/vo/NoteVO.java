@@ -9,7 +9,7 @@ public class NoteVO {
 
     private Integer id;
     private String title;
-    private String text;
+    private String description;
     private Date onCreate;
     private Date onUpdate;
     private NotebookVO notebook;
@@ -30,12 +30,12 @@ public class NoteVO {
         this.title = title;
     }
 
-    public String getText() {
-        return text;
+    public String getDescription() {
+        return description;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public NotebookVO getNotebook() {
