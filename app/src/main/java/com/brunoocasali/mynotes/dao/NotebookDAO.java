@@ -72,4 +72,34 @@ public class NotebookDAO {
         db.update(Constant.TABLE_NOTEBOOKS, values, "_id = ?", condition);
         db.close();
     }
+
+    public NotebookVO select(Integer id){
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        String[] columns = {
+                Constant.COLUMN_ID,
+                Constant.COLUMN_TITLE,
+                Constant.COLUMN_ON_CREATE,
+                Constant.COLUMN_ON_UPDATE,
+                Constant.COLUMN_DESCRIPTION
+        };
+
+        String[] condition = { String.valueOf(id) };
+
+        Cursor cursor = db.query(Constant.TABLE_NOTEBOOKS, columns, "_id = ?", condition,
+                null, null, Constant.COLUMN_ON_CREATE);
+
+        NotebookVO notebook = new NotebookVO();
+
+        if (cursor.moveToFirst()){
+            notebook.setId(cursor.getInt(cursor.getColumnIndex(Constant.COLUMN_ID)));
+            notebook.setTitle(cursor.getString(cursor.getColumnIndex(Constant.COLUMN_TITLE)));
+            notebook.setOnCreate(new Date(cursor.getInt(cursor.getColumnIndex(Constant.COLUMN_ON_CREATE))));
+            notebook.setOnUpdate(new Date(cursor.getInt(cursor.getColumnIndex(Constant.COLUMN_ON_UPDATE))));
+            notebook.setDescription(cursor.getString(cursor.getColumnIndex(Constant.COLUMN_DESCRIPTION)));
+        }
+
+        db.close();
+        return notebook;
+    }
 }
