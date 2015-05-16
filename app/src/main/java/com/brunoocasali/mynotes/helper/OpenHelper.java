@@ -41,7 +41,7 @@ public class OpenHelper extends SQLiteOpenHelper {
         String sql = "CREATE TABLE " + Constant.TABLE_NOTES + "(" +
                 Constant.COLUMN_ID + " INTEGER PRIMARY KEY, " +
                 Constant.COLUMN_TITLE + " TEXT NOT NULL, " +
-                Constant.COLUMN_TEXT + " TEXT, " +
+                Constant.COLUMN_DESCRIPTION + " TEXT, " +
                 Constant.COLUMN_ON_UPDATE + " on_update INTEGER, " +
                 Constant.COLUMN_ON_CREATE + " on_create INTEGER)" +
                 Constant.COLUMN_NOTEBOOK_ID + " REFERENCES notebooks(id))";
